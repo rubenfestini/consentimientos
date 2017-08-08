@@ -1,0 +1,28 @@
+.container
+  .row
+    .col-md-6.col-sm-12
+      .h3.text-primary
+        = "info"
+      .panel.panel-default
+        .panel-body
+          = "texto TODO!"
+    .col-md-6.col-sm-12
+      .h3.text-primary
+        Por favor completá los siguientes datos
+      = simple_form_for(@user, url: update_user_path(@user), html: { novalidate: false, method: :post }) do |f|
+        .form-inputs
+          .form-group
+            = f.input :age,  collection: User::RANGES, prompt: "Seleccionar una opción", class:'form-control', required: true
+          .form-group
+            = f.input :gender,  collection: User::GENDERS, as: :radio_buttons, required: true
+          .form-group
+            = f.input :education_level,  collection: User::EDUCATION_LEVELS, prompt: "Seleccionar una opción", required: true
+          .form-group
+            = f.input :socioeconomic_level,  collection: User::SOCIOECONOMIC_LEVELS, prompt: "Seleccionar una opción", required: true
+          .form-group
+            = f.input :mother_language,  collection: User::MOTHER_LANGUAGES, prompt: "Seleccionar una opción", required: true
+          .form-group
+            = f.input :occupation,  collection: User::OCCUPATIONS, prompt: "Seleccionar una opción", required: true
+          .form-group
+            = f.button :submit, "Continuar", class: 'btn-success btn'
+

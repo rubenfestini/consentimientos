@@ -1,0 +1,49 @@
+es:
+  users:
+    edit:
+      continue: "Continuar"
+      select_please: Seleccionar por favor
+      other_languages_example: 'Ejemplo:  "Inglés (Avanzado), Alemán (Básico)"'
+      please_complete_data: "Por favor, completa estos datos antes de continuar"
+    update:
+      complete_alert: "Por favor, completá los datos requeridos"
+  simple_form:
+    required:
+      text: 'Requerido'
+    options:
+      user:
+        gender:
+          male: 'Hombre'
+          female: 'Mujer'
+          other: 'Otro'
+        education_level:
+          unfinished_elementary: "Sin estudios/ Primaria incompleta"
+          elementary: "Primaria completa/ Secundaria incompleta"
+          highschool: "Secundaria completa/ Terciaria o Universitaria incompleta"
+          terciary: "Terciaria o Universitaria completa"
+        occupation:
+          one: "Uno"
+          two: "Dos"
+          three: "Tres"
+        mother_language:
+          spanish: "Español"
+          english: "Inglés"
+          french: "Francés"
+          german: "Alemán"
+          italian: "Italiano"
+          portuguese: "Portugués"
+          others: "Otro"
+        socioeconomic_level:
+          high: "Alto"
+          medium: "Medio"
+          low: "Bajo"
+    labels:
+      defaults:
+        age: 'Edad'
+        gender: 'Género'
+        education_level: "Máximo nivel de educación alcanzado"
+        occupation: "Ocupación"
+        socioeconomic_level: "Nivel Socioeconómico"
+        mother_language: "Lenguaje Materno"
+        q1: ''
+        q2: ''
