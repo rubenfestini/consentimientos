@@ -17,6 +17,9 @@ end
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'simple_form'
+gem 'execjs'
+gem 'therubyracer', :platforms => :ruby
+
 group :development do
   gem 'capistrano', '~> 3.0.1'
   gem 'capistrano-bundler'

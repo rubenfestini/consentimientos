@@ -1,13 +1,8 @@
 class User < ActiveRecord::Base
   has_many :surveys
 
-  include ActiveModel::Validations
-
   GENDERS = [:male, :female, :other]
   enum gender: GENDERS
-  attr_accessor :age
-  validates_presence_of :age
-
 
   RANGES = ["18-25"]
     (25..79).step(5).each do |n|
