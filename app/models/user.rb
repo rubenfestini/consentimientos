@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   MOTHER_LANGUAGES = [:spanish, :english, :french, :german, :italian, :portuguese, :others]
   enum mother_language: MOTHER_LANGUAGES
 
-  OCCUPATIONS = [:one, :two, :three]
+  OCCUPATIONS = [:employer1, :employer2, :self_employed, :professional1, :professional2, :salaried1, :salaried2,
+                 :unemployed1, :unemployed2, :rentier, :housewife,:other_occupation]
   enum occupation: OCCUPATIONS
 end
 

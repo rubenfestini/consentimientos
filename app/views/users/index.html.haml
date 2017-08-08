@@ -2,13 +2,24 @@
   .row
     .col-md-6.col-sm-12
       .h3.text-primary
-        = "info"
+        = "Bienvenidos"
       .panel.panel-default
         .panel-body
-          = "texto TODO!"
+          .h4.text
+            = "Lo invitamos a participar de este cuestionario que nos ayudará a continuar con nuestro trabajo de investigación académica."
+          .h4.text
+            = "Su participación no demandará más que unos pocos minutos"
+          .h4.text
+            = "El cuestionario está compuesto por dos etapas, en la primera se le solicitará que complete una serie de datos personales que serán usados solo con fines estadísticos. En la segunda etapa usted deberá leer un texto y responder dos preguntas con una escala de uno a cinco."
+          .h4.text
+            = "Cada vez que responda las preguntas y presione el botón continuar le será ofrecido un nuevo texto para evaluar."
+          .h4.text
+            = "Usted puede Finalizar el cuestionario en el momento que desee."
+          .h4.text
+            = "Muchas gracias por su participación"
     .col-md-6.col-sm-12
       .h3.text-primary
-        Por favor completá los siguientes datos
+        Por favor complete los siguientes datos
       = simple_form_for(@user, url: update_user_path(@user), html: { novalidate: false, method: :post }) do |f|
         .form-inputs
           .form-group
