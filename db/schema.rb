@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170806210456) do
+ActiveRecord::Schema.define(version: 20180408233947) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "additional_question_answers", force: :cascade do |t|
+    t.text     "response_text"
+    t.integer  "response_int"
+    t.string   "AdditionalQuestion"
+    t.string   "references"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "additional_questions", force: :cascade do |t|
+    t.string   "question"
+    t.string   "question_type"
+    t.string   "integer"
+    t.integer  "paragraph_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "additional_questions", ["paragraph_id"], name: "index_additional_questions_on_paragraph_id", using: :btree
 
   create_table "paragraphs", force: :cascade do |t|
     t.text     "text"
@@ -28,18 +51,21 @@ ActiveRecord::Schema.define(version: 20170806210456) do
     t.integer  "q2"
   end
 
-  add_index "surveys", ["paragraph_id"], name: "index_surveys_on_paragraph_id"
+  add_index "surveys", ["paragraph_id"], name: "index_surveys_on_paragraph_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "age"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "gender"
     t.integer  "education_level"
-    t.integer  "occupation"
     t.integer  "mother_language"
-    t.string   "socioeconomic_level"
     t.string   "integer"
+    t.text     "occupation"
+    t.integer  "change_work"
+    t.integer  "social_plan"
   end
 
+  add_foreign_key "additional_questions", "paragraphs"
+  add_foreign_key "surveys", "paragraphs"
 end

@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get 'surveys/index'
   post 'surveys/update/:id', to: 'surveys#update', as: :update_survey
 
-end
+  get 'end_surveys/index'
+ end

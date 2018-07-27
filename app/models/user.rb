@@ -14,15 +14,15 @@ class User < ActiveRecord::Base
   EDUCATION_LEVELS = [:unfinished_elementary, :elementary, :highschool, :terciary]
   enum education_level: EDUCATION_LEVELS
 
-  SOCIOECONOMIC_LEVELS = [:high, :medium, :low]
-  enum socioeconomic_level: SOCIOECONOMIC_LEVELS
-
   MOTHER_LANGUAGES = [:spanish, :english, :french, :german, :italian, :portuguese, :others]
   enum mother_language: MOTHER_LANGUAGES
 
-  OCCUPATIONS = [:employer1, :employer2, :self_employed, :professional1, :professional2, :salaried1, :salaried2,
-                 :unemployed1, :unemployed2, :rentier, :housewife,:other_occupation]
-  enum occupation: OCCUPATIONS
+  CHANGE_WORK = [:yes1, :no1, :na1]
+  enum change_work: CHANGE_WORK
+
+  SOCIAL_PLAN = [:yes2, :no2, :na2]
+  enum social_plan: SOCIAL_PLAN
+
 end
 
 

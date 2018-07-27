@@ -25,11 +25,18 @@
           .form-group
             = f.input :education_level,  collection: User::EDUCATION_LEVELS, prompt: "Seleccionar una opción", required: true
           .form-group
-            = f.input :socioeconomic_level,  collection: User::SOCIOECONOMIC_LEVELS, prompt: "Seleccionar una opción", required: true
-          .form-group
             = f.input :mother_language,  collection: User::MOTHER_LANGUAGES, prompt: "Seleccionar una opción", required: true
+
+          <b>Ocupación:</b>
+          <br/>
+
           .form-group
-            = f.input :occupation,  collection: User::OCCUPATIONS, prompt: "Seleccionar una opción", required: true
+            = f.input :occupation, required: false
+          .form-group
+            = f.input :change_work,  collection: User::CHANGE_WORK, prompt: "Seleccionar una opción", required: true
+          .form-group
+            = f.input :social_plan,  collection: User::SOCIAL_PLAN, prompt: "Seleccionar una opción", required: true
+
           .form-group
             = f.button :submit, "Continuar", class: 'btn-success btn'
 

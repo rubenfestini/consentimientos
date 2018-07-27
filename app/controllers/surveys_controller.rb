@@ -2,11 +2,13 @@ class SurveysController < ApplicationController
   protect_from_forgery with: :exception
 
   def index
-   # paragraph =  Paragraph.joins("LEFT OUTER JOIN surveys ON surveys.paragraph_id = paragraphs.id").where.not(surveys: {user: @user}).take    #Paragraph.order("RANDOM()").take
-   paragraph = Paragraph.find_by_sql(%{SELECT * FROM paragraphs WHERE id NOT IN (SELECT paragraph_id FROM surveys WHERE user_id!= #{@user.id}) ORDER BY RANDOM() LIMIT 1}).first
-    @survey = Survey.create(user_id: @user.id, paragraph: paragraph)
-#    @survey = Survey.create(user_id: @user.id, paragraph: Paragraph. left_outer_joins(:surveis).where(paragraphs: { id: null }).order("RANDOM()").take)
+    paragraph = Paragraph.find_by_sql(%{SELECT * FROM paragraphs WHERE id NOT IN (SELECT paragraph_id FROM surveys WHERE user_id = #{@user.id}) AND id NOT IN (SELECT paragraph_id FROM surveys GROUP BY paragraph_id HAVING count(*)>2) ORDER BY RANDOM() LIMIT 1}).first
 
+    if paragraph != nil
+      @survey = Survey.create(user_id: @user.id, paragraph: paragraph)
+    else
+      redirect_to controller: :end_surveys, action: :index
+    end
   end
 
   def update

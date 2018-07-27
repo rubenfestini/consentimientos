@@ -46,13 +46,24 @@ es:
           high: "Alto"
           medium: "Medio"
           low: "Bajo"
+        change_work:
+           yes1: "SI"
+           no1: "NO"
+           na1: "NS/NC"
+        social_plan:
+           yes2: "SI"
+           no2: "NO"
+           na2: "NS/NC"
+
     labels:
       defaults:
         age: 'Edad'
         gender: 'Género'
         education_level: "Máximo nivel de educación alcanzado"
-        occupation: "Ocupación"
+        occupation: "- Describa de la tarea que realiza:"
         socioeconomic_level: "Nivel Socioeconómico"
         mother_language: "Lenguaje Materno"
+        change_work: "- ¿Cambió de trabajo en los últimos 6 meses? "
+        social_plan: "- ¿Es titular de algún subsidio o plan social? "
         q1: ''
         q2: ''

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question: MyString
+  question_type: MyString
+  integer: MyString
+  paragraph_id: 
+
+two:
+  question: MyString
+  question_type: MyString
+  integer: MyString
+  paragraph_id: 
