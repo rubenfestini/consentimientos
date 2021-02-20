@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
   before_action :load_user
 
   def load_user
-    @user = session[:user_id] ? User.find(session[:user_id]) : create_user
+    begin
+      @user = session[:user_id] ? User.find(session[:user_id]) : create_user
+    rescue ActiveRecord::RecordNotFound
+      @user = create_user
+    end
   end
 
   def create_user
