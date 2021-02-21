@@ -12,13 +12,12 @@ class SurveysController < ApplicationController
   end
 
   def update
-    @survey = Survey.find(params[:id])
-    if params[:survey] == nil
-      flash[:alert] = "That's wrong 1"
-    elsif @survey.update!(survey_params)
-      redirect_to controller: :surveys, action: :index
+    if params[:commit] == 'Finalizar'
+      redirect_to controller: :end_surveys, action: :index
     else
-      flash[:alert] = "That's wrong 2"
+      @survey = Survey.find(params[:id])
+      @survey.update!(survey_params)
+      redirect_to controller: :surveys, action: :index
     end
   end
 
