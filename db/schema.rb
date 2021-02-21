@@ -11,19 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180408233947) do
+ActiveRecord::Schema.define(version: 20180813005946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "additional_question_answers", force: :cascade do |t|
-    t.text     "response_text"
-    t.integer  "response_int"
-    t.string   "AdditionalQuestion"
-    t.string   "references"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.text     "answer_text"
+    t.integer  "answer_boolean"
+    t.integer  "survey_id"
+    t.integer  "additional_question_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
+
+  add_index "additional_question_answers", ["additional_question_id"], name: "index_additional_question_answers_on_additional_question_id", using: :btree
+  add_index "additional_question_answers", ["survey_id"], name: "index_additional_question_answers_on_survey_id", using: :btree
 
   create_table "additional_questions", force: :cascade do |t|
     t.string   "question"
@@ -66,6 +69,8 @@ ActiveRecord::Schema.define(version: 20180408233947) do
     t.integer  "social_plan"
   end
 
+  add_foreign_key "additional_question_answers", "additional_questions"
+  add_foreign_key "additional_question_answers", "surveys"
   add_foreign_key "additional_questions", "paragraphs"
   add_foreign_key "surveys", "paragraphs"
 end

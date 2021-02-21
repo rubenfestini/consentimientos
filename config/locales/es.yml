@@ -11,6 +11,10 @@ es:
     required:
       text: 'Requerido'
     options:
+      defaults:
+        answer_boolean:
+          yes3: "SI"
+          no3: "NO"
       user:
         gender:
           male: 'Hombre'
@@ -47,14 +51,13 @@ es:
           medium: "Medio"
           low: "Bajo"
         change_work:
-           yes1: "SI"
-           no1: "NO"
-           na1: "NS/NC"
+          yes1: "SI"
+          no1: "NO"
+          na1: "NS/NC"
         social_plan:
-           yes2: "SI"
-           no2: "NO"
-           na2: "NS/NC"
-
+          yes2: "SI"
+          no2: "NO"
+          na2: "NS/NC"
     labels:
       defaults:
         age: 'Edad'

@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  response_text: MyText
-  response_int: 1
-  AdditionalQuestion: MyString
-  references: MyString
+  answer_text: MyText
+  answer_boolean: 1
+  survey_id: 
+  additional_question_id: 
 
 two:
-  response_text: MyText
-  response_int: 1
-  AdditionalQuestion: MyString
-  references: MyString
+  answer_text: MyText
+  answer_boolean: 1
+  survey_id: 
+  additional_question_id: 

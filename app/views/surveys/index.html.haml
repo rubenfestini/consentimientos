@@ -1,41 +1,49 @@
 .container
-  %h4
-    //%span.label.label-warning
-    //  = "*"
-    Por favor lee el texto y contestá las siguientes preguntas
-
-  .alert-sourvey
-    = @survey.paragraph.text
-  = simple_form_for(@survey, url: update_survey_path(@survey), html: { method: :post }) do |f|
-    .form-inputs
-      .row
-        .col-md-12
-          .p
-            %b
-              En General ¿Cuán difícil de entender le resultó el texto?
-      .row.sourvey-row
-        .col-md-4
-          Muy difícil de entender
-        .col-md-4.form-inline
-          = f.input :q1,  collection: Survey::RANGES, as: :radio_buttons, required: true, label: false
-        .col-md-4
-          Muy fácil de entender
-      .row
-        .col-md-12
-          %b
-            En particular, ¿Cuán difíciles de entender les resultaron las palabras?
-      .row.sourvey-row
-        .col-md-4.col-xs-4
-          Hay muchas palabras que no entiendo
-        .col-md-4.col-xs-4
-          .form-inline
-            = f.input :q2,  collection: Survey::RANGES, as: :radio_buttons, required: true, label: false
-        .col-md-4.col-xs-4
-          Entiendo sin problemas todas las palabras
-      .row
-        .col-md-12
-          .form-inline
-            = f.button :submit, "Continuar", :name => "commit", class: 'btn-success btn'
-            = f.button :submit, "Finalizar", :name => "commit", class: 'btn btn-primary'
+  .row
+    .col-md-6.col-sm-12
+      .alert-sourvey
+        = @survey.paragraph.text
+    .col-md-6.col-sm-12
+      = simple_form_for(@survey, url: update_survey_path(@survey), html: { method: :post }) do |f|
+        .form-inputs
+          .row
+            .col-md-12
+              .p
+                %b
+                  En General ¿Cuán difícil de entender le resultó el texto?
+          .row.sourvey-row
+            .col-md-4
+              Muy difícil de entender
+            .col-md-4.form-inline
+              = f.input :q1,  collection: Survey::RANGES, as: :radio_buttons, required: true, label: false
+            .col-md-4
+              Muy fácil de entender
+          .row
+            .col-md-12
+              %b
+                En particular, ¿Cuán difíciles de entender les resultaron las palabras?
+          .row.sourvey-row
+            .col-md-4.col-xs-4
+              Hay muchas palabras que no entiendo
+            .col-md-4.col-xs-4
+              .form-inline
+                = f.input :q2,  collection: Survey::RANGES, as: :radio_buttons, required: true, label: false
+            .col-md-4.col-xs-4
+              Entiendo sin problemas todas las palabras
+          -@survey.additional_question_answers.each do |aqa|
+            .row.sourvey-row
+              .col-md-6
+                = aqa.additional_question.question
+              .col-md-6
+                = f.fields_for :additional_question_answers, aqa do |aqa_row|
+                  - if aqa.additional_question.question_type == "1"
+                    = aqa_row.input :answer_boolean,  collection: Survey::ANSWER_BOOLEAN, prompt: "Seleccionar una opción", class:'form-control', required: true, label: false
+                  - else
+                    = aqa_row.input :answer_text, required: true, label: false
+          .row
+            .col-md-12
+              .form-inline
+                = f.button :submit, "Continuar", :name => "commit", class: 'btn-success btn'
+                = f.button :submit, "Finalizar", :name => "commit", class: 'btn btn-primary'
 
 
