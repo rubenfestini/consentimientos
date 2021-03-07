@@ -32,6 +32,8 @@ group :development do
   gem 'rails_layout'
 end
 group :development, :test do
+  gem 'debase'
+  gem 'ruby-debug-ide'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'thin'

@@ -72,6 +72,9 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     daemons (1.2.6)
+    debase (0.2.4.1)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.12)
     debug_inspector (0.0.3)
     erubis (2.7.0)
     eventmachine (1.2.7)
@@ -162,6 +165,8 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     ref (2.0.0)
+    ruby-debug-ide (0.7.2)
+      rake (>= 0.8.1)
     ruby_parser (3.11.0)
       sexp_processor (~> 4.9)
     sass (3.5.6)
@@ -225,6 +230,7 @@ DEPENDENCIES
   capistrano-rails-console
   capistrano-rvm (~> 0.1.1)
   coffee-rails (~> 4.1.0)
+  debase
   execjs
   haml-rails
   html2haml
@@ -235,6 +241,7 @@ DEPENDENCIES
   pry-rescue
   rails (= 4.2.6)
   rails_layout
+  ruby-debug-ide
   sass-rails (~> 5.0)
   simple_form
   spring

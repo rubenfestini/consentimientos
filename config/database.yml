@@ -5,15 +5,17 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
   pool: 5
   timeout: 5000
 
 development:
+#  <<: *default
   adapter: postgresql
   encoding: utf8
-  host: localhost
+  host: db
   database: consentimientos_dev
+  username: postgres
+  password: xpoldyht
   pool: 5
   timeout: 5000
 
@@ -27,3 +29,14 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
+#
+#
+#development:
+#  <<: *default
+#  url: <%= ENV['DATABASE_URL'] %>
+#test:
+#  <<: *default
+#  url: <%= ENV['DATABASE_URL'] %>
+#production:
+#  <<: *default
+#  url: <%= ENV['DATABASE_URL'] %>
