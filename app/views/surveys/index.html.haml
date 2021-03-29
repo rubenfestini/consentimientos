@@ -4,7 +4,7 @@
       .alert-sourvey
         = @survey.paragraph.text
     .col-md-8.col-sm-12
-      = simple_form_for(@survey, url: update_survey_path(@survey), html: { method: :post }) do |f|
+      = simple_form_for(@survey, url: update_survey_path(@survey.paragraph_id,@survey.user_id), html: { method: :post }) do |f|
         .form-inputs
           .row
             .col-md-12
@@ -44,7 +44,7 @@
               .col-md-12
                 = f.fields_for :additional_question_answers, aqa do |aqa_row|
                   - if aqa.additional_question.question_type == "1"
-                    = aqa_row.input :answer_boolean,  collection: Survey::ANSWER_BOOLEAN, prompt: "Seleccionar una opción", class:'form-control', required: true, label: false
+                    = aqa_row.input :answer_boolean,  collection: AdditionalQuestionAnswer::ANSWER_BOOLEAN, prompt: "Seleccionar una opción", class:'form-control', required: true, label: false
                   - else
                     = aqa_row.input :answer_text, required: true, label: false
           .row

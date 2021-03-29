@@ -10,7 +10,5 @@ class Survey < ActiveRecord::Base
     RANGES << [(n).to_s, (n).to_s]
   end
 
-  #  ANSWER_BOOLEAN = [:yes3, :no3]
-  ANSWER_BOOLEAN = [:yes3, :no3]
-  enum answer_boolean: ANSWER_BOOLEAN
+
 end
