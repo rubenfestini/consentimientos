@@ -18,7 +18,7 @@
         Por favor complete los siguientes datos
       = simple_form_for(@user, url: update_user_path(@user), html: { novalidate: false, method: :post }) do |f|
         .form-inputs
-          = f.input :age,  collection: User::RANGES, prompt: "Seleccionar una opción", class:'form-control', required: true, label: false, inline_label: true, placeholder: 'lala'
+          = f.input :age,  collection: User::RANGES, prompt: "Seleccionar una opción", required: true
           = f.input :gender,  collection: User::GENDERS, as: :radio_buttons, required: true
           = f.input :education_level,  collection: User::EDUCATION_LEVELS, prompt: "Seleccionar una opción", required: true
           = f.input :mother_language,  collection: User::MOTHER_LANGUAGES, prompt: "Seleccionar una opción", required: true
