@@ -60,8 +60,8 @@ es:
           na2: "NS/NC"
     labels:
       defaults:
-        age: 'Edad'
-        gender: 'Género'
+        age: 'Edad:'
+        gender: 'Género:'
         education_level: "Máximo nivel de educación alcanzado"
         occupation: "- Describa de la tarea que realiza:"
         socioeconomic_level: "Nivel Socioeconómico"

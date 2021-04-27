@@ -1,9 +1,9 @@
 .container
   .row
-    .col-md-4.col-sm-12
+    .col-lg-5.col-md-5.col-sm-12
       .alert-sourvey
         = @survey.paragraph.text
-    .col-md-8.col-sm-12
+    .col-lg-7.col-md-7.col-sm-12
       = simple_form_for(@survey, url: update_survey_path(@survey.paragraph_id,@survey.user_id), html: { method: :post }) do |f|
         .form-inputs
           .row
@@ -14,7 +14,7 @@
           .row.sourvey-row
             .col-md-3.col-sm-12
               Muy difícil de entender
-            .col-md-6.form-inline
+            .col-md-6.form-inline.col-sm-12
               = f.input :q1,  collection: Survey::RANGES, as: :radio_buttons, required: true, label: false
             .col-md-3.col-sm-12
               Muy fácil de entender
