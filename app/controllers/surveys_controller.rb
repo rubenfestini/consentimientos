@@ -4,8 +4,14 @@ class SurveysController < ApplicationController
   def index
     paragraph = Paragraph.find_by_sql(%{SELECT * FROM paragraphs WHERE id NOT IN (SELECT paragraph_id FROM surveys WHERE user_id = #{@user.id}) AND id NOT IN (SELECT paragraph_id FROM surveys GROUP BY paragraph_id HAVING count(*)>2) ORDER BY RANDOM() LIMIT 1}).first
     #paragraph = Paragraph.find_by_sql(%{SELECT * FROM paragraphs WHERE id NOT IN (SELECT paragraph_id FROM surveys WHERE user_id = #{@user.id}) ORDER BY RANDOM() LIMIT 1}).first
+    if @user.age.nil?
+      redirect_to controller: :users, action: :index
+    end
+    if @user.occupation != "Se acerca el fin de la tesis!!!"
+      redirect_to controller: :users, action: :index
+    end
 
-    if paragraph != nil
+   if paragraph != nil
       @survey = Survey.new(user_id: @user.id, paragraph: paragraph)
       @survey.paragraph.additional_questions.each do |aq|
         @survey.additional_question_answers.new(survey: @survey, additional_question: aq)
@@ -23,7 +29,7 @@ class SurveysController < ApplicationController
       survey.paragraph.additional_questions.each do |aq|
         survey.additional_question_answers.new(survey: survey, additional_question: aq)
       end
-      survey.update!(survey_params)
+        survey.update!(survey_params)
       redirect_to controller: :surveys, action: :index
     end
   end
