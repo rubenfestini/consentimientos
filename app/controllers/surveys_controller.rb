@@ -26,10 +26,10 @@ class SurveysController < ApplicationController
       redirect_to controller: :end_surveys, action: :index
     else
       survey = Survey.create(user_id: params[:user_id], paragraph_id: params[:paragraph])
-      survey.paragraph.additional_questions.each do |aq|
-        survey.additional_question_answers.new(survey: survey, additional_question: aq)
-      end
-        survey.update!(survey_params)
+      #      survey.paragraph.additional_questions.each do |aq|
+      #  survey.additional_question_answers.new(survey: survey, additional_question: aq)
+      #end
+      survey.update!(survey_params)
       redirect_to controller: :surveys, action: :index
     end
   end
