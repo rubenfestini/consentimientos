@@ -7,7 +7,7 @@ class SurveysController < ApplicationController
     if @user.age.nil?
       redirect_to controller: :users, action: :index
     end
-    if @user.occupation != "Se acerca el fin de la tesis!!!"
+    if @user.occupation != "Vendedor de #,. y !"
       redirect_to controller: :users, action: :index
     end
 

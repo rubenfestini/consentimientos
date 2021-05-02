@@ -31,7 +31,7 @@
             .col-md-3.col-sm-12
               Entiendo sin problemas todas las palabras
 
-          - if @survey.additional_question_answers != nil
+          - if ! @survey.additional_question_answers.empty?
             .row
               .col-md-12
                 %b
