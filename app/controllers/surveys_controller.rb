@@ -22,7 +22,7 @@ class SurveysController < ApplicationController
   end
 
   def update
-    if params[:commit] == 'Finalizar'
+    if params[:commit].include? 'Finalizar'
       redirect_to controller: :end_surveys, action: :index
     else
       survey = Survey.create(user_id: params[:user_id], paragraph_id: params[:paragraph])
