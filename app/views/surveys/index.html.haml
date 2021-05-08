@@ -1,6 +1,8 @@
 .container
   .row
     .col-lg-5.col-md-5.col-sm-12
+      %b
+        Leer el siguiente texto:
       .alert-sourvey
         = @survey.paragraph.text
     .col-lg-7.col-md-7.col-sm-12
@@ -10,7 +12,7 @@
             .col-md-12
               .p
                 %b
-                  En General ¿Cuán difícil de entender le resultó el texto?
+                  En general ¿cuán difícil de entender le resultó el texto?
           .row.sourvey-row
             .col-md-3.col-sm-12
               Muy difícil de entender
@@ -20,8 +22,11 @@
               Muy fácil de entender
           .row
             .col-md-12
+              %hr{:class => "custom-line"}
+          .row
+            .col-md-12
               %b
-                En particular, ¿Cuán difíciles de entender les resultaron las palabras?
+                En particular, ¿cuán difíciles de entender le resultaron las palabras?
           .row.sourvey-row
             .col-md-3.col-sm-12
               Hay muchas palabras que no entiendo
@@ -30,6 +35,9 @@
                 = f.input :q2,  collection: Survey::RANGES, as: :radio_buttons, required: true, label: false
             .col-md-3.col-sm-12
               Entiendo sin problemas todas las palabras
+          .row
+            .col-md-12
+              %hr{:class => "custom-line"}
 
           - if ! @survey.additional_question_answers.empty?
             .row
@@ -50,7 +58,7 @@
           .row
             .col-md-12
               .form-inline
-                = f.button :submit, "Continuar", :name => "commit", class: 'btn-success btn'
-                = f.button :submit, "Finalizar", :name => "commit", class: 'btn btn-primary', formnovalidate: true
+                = f.button :submit, "Enviar y avanzar al siguiente texto", :name => "commit", class: 'btn-success btn'
+                = f.button :submit, "Finalizar mi participación", :name => "commit", class:'custom-btn', formnovalidate: true
 
 
