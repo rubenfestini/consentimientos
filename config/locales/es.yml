@@ -25,6 +25,7 @@ es:
           elementary: "Primaria completa/ Secundaria incompleta"
           highschool: "Secundaria completa/ Terciaria o Universitaria incompleta"
           terciary: "Terciaria o Universitaria completa"
+          postgraduate: "Postgrado"
         occupation:
           employer1: "Patrón/empleador (con 5 o más empleados)"
           employer2: "Patrón/empleador (de 1 a 4 empleados)"

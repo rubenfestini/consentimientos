@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     RANGES << "81+"
     enum age: RANGES
 
-  EDUCATION_LEVELS = [:unfinished_elementary, :elementary, :highschool, :terciary]
+  EDUCATION_LEVELS = [:unfinished_elementary, :elementary, :highschool, :terciary, :postgraduate]
   enum education_level: EDUCATION_LEVELS
 
   MOTHER_LANGUAGES = [:spanish, :english, :french, :german, :italian, :portuguese, :others]
