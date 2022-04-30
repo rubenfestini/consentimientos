@@ -17,6 +17,7 @@ class SurveysController < ApplicationController
       @survey = Survey.new(user_id: @user.id, paragraph: paragraph)
       @survey.paragraph.additional_questions.each do |aq|
         @survey.additional_question_answers.new(survey: @survey, additional_question: aq)
+        a = 3;
       end
     else
       redirect_to controller: :end_surveys, action: :index
@@ -38,6 +39,6 @@ class SurveysController < ApplicationController
 
   private
   def survey_params
-    params.require(:survey).permit(:q1, :q2,  additional_question_answers_attributes: [:id, :answer_boolean, :answer_text, :_destroy])
+    params.require(:survey).permit(:q1, :q2,  additional_question_answers_attributes: [:id,:additional_question_id, :answer_boolean, :answer_text, :_destroy])
   end
 end
