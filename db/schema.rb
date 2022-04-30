@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211023134650) do
+ActiveRecord::Schema.define(version: 20220430165948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +41,10 @@ ActiveRecord::Schema.define(version: 20211023134650) do
 
   create_table "paragraphs", force: :cascade do |t|
     t.text     "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "section_id"
+    t.integer  "difficulty", limit: 2
   end
 
   add_index "paragraphs", ["section_id"], name: "index_paragraphs_on_section_id", using: :btree
