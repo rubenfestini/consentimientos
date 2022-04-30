@@ -55,10 +55,12 @@
                     = aqa_row.input :answer_boolean,  collection: AdditionalQuestionAnswer::ANSWER_BOOLEAN, prompt: "Seleccionar una opción", class:'form-control', required: true, label: false
                   - else
                     = aqa_row.input :answer_text, required: true, label: false
+
           .row
             .col-md-12
               .form-inline
-                = f.button :submit, "Enviar y avanzar al siguiente texto", :name => "commit",  class: 'btn-success btn'
-                = f.button :submit, "Finalizar mi participación", :name => "commit", class:'custom-btn', formnovalidate: true
-
-
+                = f.button :submit, "Enviar y avanzar al siguiente texto ", :name => "commit",  class: 'btn-success btn'
+                - if (3 - @survey.surveys_answered_by_user) > 0
+                  = f.button :submit, "Debe completar " + (3 - @survey.surveys_answered_by_user).to_s + " párrafos para finalizar" , :name => "commit", class:'custom-btn', formnovalidate: true
+                - else
+                  = f.button :submit, "Finalizar mi participación", :name => "commit", class:'custom-btn', formnovalidate: true

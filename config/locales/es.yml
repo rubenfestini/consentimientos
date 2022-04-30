@@ -64,6 +64,7 @@ es:
         age: 'Edad:'
         gender: 'Género:'
         education_level: "Máximo nivel de educación alcanzado"
+        years_completed: "Años completados"
         occupation: "- Describa de la tarea que realiza:"
         socioeconomic_level: "Nivel Socioeconómico"
         mother_language: "Lenguaje Materno"

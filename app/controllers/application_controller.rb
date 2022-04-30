@@ -7,13 +7,14 @@ class ApplicationController < ActionController::Base
   def load_user
     begin
       @user = session[:user_id] ? User.find(session[:user_id]) : create_user
-    rescue ActiveRecord::RecordNotFound
-      @user = create_user
+      rescue ActiveRecord::RecordNotFound
+        @user = create_user
     end
   end
 
   def create_user
     user = User.create!
+    #user.read_paragraph =0
     session[:user_id] = user.id
     user
   end

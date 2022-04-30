@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :surveys
 
+  attr_accessor :read_paragraphs
+
   GENDERS = [:male, :female, :other]
   enum gender: GENDERS
 
@@ -10,6 +12,9 @@ class User < ActiveRecord::Base
     end
     RANGES << "81+"
     enum age: RANGES
+
+  YEARS_COMPLETED = ["1", "2", "3", "4", "5", "6", "7"]
+  enum years_completed: YEARS_COMPLETED
 
   EDUCATION_LEVELS = [:unfinished_elementary, :elementary, :highschool, :terciary, :postgraduate]
   enum education_level: EDUCATION_LEVELS

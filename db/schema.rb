@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180813005946) do
+ActiveRecord::Schema.define(version: 20211023134650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20180813005946) do
     t.text     "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "section_id"
+  end
+
+  add_index "paragraphs", ["section_id"], name: "index_paragraphs_on_section_id", using: :btree
+
+  create_table "sections", force: :cascade do |t|
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "surveys", force: :cascade do |t|
@@ -67,10 +76,12 @@ ActiveRecord::Schema.define(version: 20180813005946) do
     t.text     "occupation"
     t.integer  "change_work"
     t.integer  "social_plan"
+    t.integer  "years_completed"
   end
 
   add_foreign_key "additional_question_answers", "additional_questions"
   add_foreign_key "additional_question_answers", "surveys"
   add_foreign_key "additional_questions", "paragraphs"
+  add_foreign_key "paragraphs", "sections"
   add_foreign_key "surveys", "paragraphs"
 end

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:age, :gender, :education_level, :socioeconomic_level, :mother_language, :occupation, :change_work, :social_plan)
+    params.require(:user).permit(:age, :gender, :education_level, :years_completed,   :socioeconomic_level, :mother_language, :occupation, :change_work, :social_plan)
   end
 
 end

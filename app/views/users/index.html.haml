@@ -33,7 +33,8 @@
           = f.input :age,  collection: User::RANGES, prompt: "Seleccionar una opción", required: true
           = f.input :gender,  collection: User::GENDERS, as: :radio_buttons, required: true
           = f.input :education_level,  collection: User::EDUCATION_LEVELS, prompt: "Seleccionar una opción", required: true
-          = f.input :mother_language,  collection: User::MOTHER_LANGUAGES, prompt: "Seleccionar una opción", required: true
+          = f.input :years_completed,  collection: User::YEARS_COMPLETED, prompt: "Seleccionar una opción", required: true
+          -#= f.input :mother_language,  collection: User::MOTHER_LANGUAGES, prompt: "Seleccionar una opción", required: true
 
           <b>Ocupación:</b>
           <br/>

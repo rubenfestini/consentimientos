@@ -7,9 +7,11 @@ class SurveysController < ApplicationController
     if @user.age.nil?
       redirect_to controller: :users, action: :index
     end
+=begin
     if @user.occupation != "Vendedor de #,. y !"
       redirect_to controller: :users, action: :index
     end
+=end
 
    if paragraph != nil
       @survey = Survey.new(user_id: @user.id, paragraph: paragraph)
@@ -37,6 +39,5 @@ class SurveysController < ApplicationController
   private
   def survey_params
     params.require(:survey).permit(:q1, :q2,  additional_question_answers_attributes: [:id, :answer_boolean, :answer_text, :_destroy])
-    #    params.require(:survey).permit(:q1, :q2)
   end
 end
