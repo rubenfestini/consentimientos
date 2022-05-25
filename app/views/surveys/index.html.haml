@@ -53,8 +53,12 @@
                 = f.fields_for :additional_question_answers, aqa do |aqa_row|
                   - if aqa.additional_question.question_type == "1"
                     = aqa_row.input :answer_boolean,  collection: AdditionalQuestionAnswer::ANSWER_BOOLEAN, prompt: "Seleccionar una opción", class:'form-control', required: true, label: false
-                  - else
+                  - elsif aqa.additional_question.question_type == "2"
                     = aqa_row.input :answer_text, required: true, label: false
+                  - else
+                    -# = aqa_row.input :additional_question_option_id, collection: collection_radio_buttons(:additional_question_answers,:additional_question_id, Section.all,:id,:description), as: :radio_buttons, required: true, label: false
+                    -# = aqa_row.collection_radio_buttons :additional_question_option_id,  aqa.additional_question.optionsCollection,:id,:option,{:item_wrapper_class => 'form-control'}, required: true, label: false
+                  = aqa_row.input :additional_question_option_id,  collection: aqa.additional_question.optionsCollection, label_method: :option, value_method: :id, as: :radio_buttons, required: true, label: false
 
                   = aqa_row.input :additional_question_id, as: :hidden
 
@@ -63,6 +67,6 @@
               .form-inline
                 = f.button :submit, "Enviar y avanzar al siguiente texto ", :name => "commit",  class: 'btn-success btn'
                 - if (3 - @survey.surveys_answered_by_user) > 0
-                  = f.button :submit, "Debe completar " + (3 - @survey.surveys_answered_by_user).to_s + " párrafos para finalizar" , :name => "commit", class:'custom-btn', formnovalidate: true
+                  = f.button :submit, "Debe completar " + (3 - @survey.surveys_answered_by_user).to_s + " párrafos para finalizar" , :name => "commit", class:'custom-btn-disabled', disabled: true, formnovalidate: true
                 - else
                   = f.button :submit, "Finalizar mi participación", :name => "commit", class:'custom-btn', formnovalidate: true

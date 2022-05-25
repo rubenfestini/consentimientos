@@ -39,6 +39,6 @@ class SurveysController < ApplicationController
 
   private
   def survey_params
-    params.require(:survey).permit(:q1, :q2,  additional_question_answers_attributes: [:id,:additional_question_id, :answer_boolean, :answer_text, :_destroy])
+    params.require(:survey).permit(:q1, :q2,  additional_question_answers_attributes: [:id,:additional_question_id, :answer_boolean, :answer_text,:additional_question_option_id, :_destroy])
   end
 end

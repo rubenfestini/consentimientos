@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220430165948) do
+ActiveRecord::Schema.define(version: 20220430221223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,23 @@ ActiveRecord::Schema.define(version: 20220430165948) do
     t.integer  "answer_boolean"
     t.integer  "survey_id"
     t.integer  "additional_question_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "additional_question_option_id"
   end
 
   add_index "additional_question_answers", ["additional_question_id"], name: "index_additional_question_answers_on_additional_question_id", using: :btree
   add_index "additional_question_answers", ["survey_id"], name: "index_additional_question_answers_on_survey_id", using: :btree
+
+  create_table "additional_question_options", force: :cascade do |t|
+    t.string   "option"
+    t.boolean  "right_answer"
+    t.integer  "additional_question_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "additional_question_options", ["additional_question_id"], name: "index_additional_question_options_on_additional_question_id", using: :btree
 
   create_table "additional_questions", force: :cascade do |t|
     t.string   "question"
@@ -80,8 +91,10 @@ ActiveRecord::Schema.define(version: 20220430165948) do
     t.integer  "years_completed"
   end
 
+  add_foreign_key "additional_question_answers", "additional_question_options"
   add_foreign_key "additional_question_answers", "additional_questions"
   add_foreign_key "additional_question_answers", "surveys"
+  add_foreign_key "additional_question_options", "additional_questions"
   add_foreign_key "additional_questions", "paragraphs"
   add_foreign_key "paragraphs", "sections"
   add_foreign_key "surveys", "paragraphs"
